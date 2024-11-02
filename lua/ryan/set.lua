@@ -3,6 +3,9 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 -- Make line numbers default
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
