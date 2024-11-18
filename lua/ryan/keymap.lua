@@ -1,9 +1,3 @@
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -50,8 +44,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Keymap to paste from yank rather than last register
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"0p', { desc = 'Paste from the register 0 (yank register)' })
--- TODO: Want to add some keymaps to make tab navigation easier, not sure if I'll need this so I'll play around without it for a bit first
--- 1. open new tab
--- 2. switch to tab number
--- 3. close tab
--- 4. If possible, display tab number with name so command (2) becomes easier
+-- Keymap to delete and put into yank register rather than last register
+-- vim.keymap.set({ 'n', 'v' }, '<leader>d', '"0d', { desc = 'delete and put into register 0 (yank register)' })
+
+-- Keymaps for going into netrw
+vim.keymap.set('n', '<leader>ex', '<cmd>Ex<CR>', { desc = 'Open File Explorer' })
+vim.keymap.set('n', '<leader>ev', '<cmd>Vex<CR>', { desc = 'Open File Explorer' })
