@@ -50,3 +50,18 @@ vim.keymap.set({ 'n', 'v' }, '<leader>p', '"0p', { desc = 'Paste from the regist
 -- Keymaps for going into netrw
 vim.keymap.set('n', '<leader>ex', '<cmd>Ex<CR>', { desc = 'Open File Explorer' })
 vim.keymap.set('n', '<leader>ev', '<cmd>Vex<CR>', { desc = 'Open File Explorer' })
+
+-- Keymaps for sourcing
+vim.keymap.set('n', '<leader><leader>x', '<cmd>:source %<CR>', { desc = 'Source current file' })
+
+-- Resizing Windows
+vim.keymap.set('n', '<C-,>', '<cmd>:vertical res -5<CR>', { desc = 'Decrease window width' })
+vim.keymap.set('n', '<C-.>', '<cmd>:vertical res +5<CR>', { desc = 'Increase window width' })
+vim.keymap.set('n', '<C-->', '<cmd>:vertical res -5<CR>', { desc = 'Increase window height' })
+vim.keymap.set('n', '<C-=>', '<cmd>:vertical res +5<CR>', { desc = 'Decrease window height' })
+
+-- Leetcode nvim keymaps
+
+vim.keymap.set('n', '<leader>lr', '<cmd>Leet run<CR>', { desc = '[L]eetcode [R]un solution' })
+vim.keymap.set('n', '<leader>ls', '<cmd>Leet submit<CR>', { desc = '[L]eetcode [S]ubmit solution' })
+vim.keymap.set('n', '<leader>lp', '<cmd>Leet list<CR>', { desc = '[L]eetcode [P]roblem list' })
