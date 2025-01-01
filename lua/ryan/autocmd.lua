@@ -24,3 +24,34 @@ autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Function to attach to autorun command to buffer
+local attachAutorunToBuffer = function(bufn, pattern, command)
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    group = vim.api.nvim_create_augroup('autorun', { clear = true }),
+    pattern = pattern,
+    callback = function()
+      local function appendData(_, data)
+        if data then
+          vim.api.nvim_buf_set_lines(bufn, -1, -1, false, data)
+        end
+      end
+      vim.api.nvim_buf_set_lines(bufn, 0, -1, false, { 'The output of main.go is:' })
+      vim.fn.jobstart(command, {
+        stdout_buffered = true,
+        on_stdout = appendData,
+        on_stderr = appendData,
+      })
+    end,
+  })
+end
+
+-- Creater user command for attaching autorun to buffer
+vim.api.nvim_create_user_command('Autorun', function()
+  print 'AutoRun starts now...'
+  vim.cmd.new { mods = { vertical = true } }
+  local bufn = vim.api.nvim_get_current_buf()
+  local pattern = vim.fn.input 'Pattern: '
+  local command = vim.split(vim.fn.input 'Command: ', ' ')
+  attachAutorunToBuffer(tonumber(bufn), pattern, command)
+end, {})
